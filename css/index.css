@@ -1,0 +1,25 @@
+.custom{
+    width: 600px;
+    margin-top:40px;
+   
+}
+form{
+    width:600px;
+    border:2px solid;
+    padding:30px;
+    border-radius: 30px;
+}
+.formlogin input{
+    width: 100%;
+    padding:10px;
+    margin-top:10px;
+    border-radius: 15px;
+    
+}
+body{
+    background-image: url(../Asset/back3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* backdrop-filter: blur(2px); */
+    height: 100vh;
+}

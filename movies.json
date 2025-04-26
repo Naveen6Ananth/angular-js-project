@@ -1,0 +1,132 @@
+[
+  {
+    "id": 1,
+    "title": "Leo",
+    "poster": "img/vijay.jpg",
+    "genre": "Action",
+    "language": "Tamil",
+    "rating": 4.2,
+    "price": "150",
+    "release_date": "2022-01-01",
+    "day": "Today"
+  },
+  {
+    "id": 2,
+    "title": "Kaappaan",
+    "poster": "img/surya.jpg",
+
+    "genre": "Drama",
+    "language": "Tamil",
+    "rating": 4.0,
+    "price": "100",
+    "release_date": "2022-02-01",
+    "day": "Today"
+  },
+  {
+    "id": 3,
+    "title": "vaalu",
+    "poster": "img/simbu.jpg",
+    "genre": "Comedy",
+    "language": "Tamil",
+    "rating": 4.2,
+    "price": "150",
+    "release_date": "2022-03-01",
+    "day": "Monday"
+  },
+  {
+    "id": 4,
+    "title": "Thor",
+    "poster": "img/thor.jpg",
+    "genre": "Adventures",
+    "language": "English",
+    "rating": 4.2,
+    "price": "120",
+    "release_date": "2022-04-01",
+    "day": "Friday"
+  },
+  {
+    "id": 5,
+    "title": "sara",
+    "poster": "img/saga.jpg",
+
+    "genre": "Drama",
+    "language": "English",
+    "rating": 4.9,
+    "price": "250",
+    "release_date": "2022-05-01",
+    "day": "Today"
+  },
+  {
+    "id": 6,
+    "title": "RRR",
+    "poster": "img/rrr.jpg",
+
+    "genre": "Action",
+    "language": "Telugu",
+    "rating": 4.2,
+    "price": "150",
+    "release_date": "2022-06-01",
+    "day": "Sunday"
+  },
+  {
+    "id": 7,
+    "title": "Salaar",
+    "poster": "img/salar.jpg",
+  
+    "genre": "Action",
+    "language": "Telugu",
+    "rating": 4.2,
+    "price": "140",
+    "release_date": "2022-07-01",
+    "day": "Monday"
+  },
+  {
+    "id": 8,
+    "title": "Premalu",
+    "poster": "img/pra.jpg",
+
+    "genre": "Drama",
+    "language": "Malaiyalam",
+    "rating": 4.2,
+    "price": "110",
+    "release_date": "2022-08-01",
+    "day": "Tuesday"
+  },
+  {
+    "id": 9,
+    "title": "Goat",
+    "poster": "img/goat.jpg",
+    "genre": "Action",
+    "language": "Tamil",
+    "rating": 4.2,
+    "price": "150",
+    "release_date": "2022-01-01",
+    "day": "Today"
+  },
+  {
+    "id": 10,
+    "title": "Master",
+    "poster": "img/master.jpg",
+
+    "genre": "Action",
+    "language": "Tamil",
+    "rating": 4.0,
+    "price": "100",
+    "release_date": "2022-02-01",
+    "day": "Tuesday"
+  },
+ 
+  
+{
+
+  "id": 11,
+  "title": "kaththi",
+  "poster": "img/kaththi.jpg",
+  "genre": "Action",
+  "language": "Tamil",
+  "rating": 4.2,
+  "price": "150",
+  "release_date": "2022-01-01",
+  "day": "Today"
+}
+]

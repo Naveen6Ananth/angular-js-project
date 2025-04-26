@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="admin">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <script src="bootstrap/bootstrap.bundle.min.js"></script>
+
+    <script src="Angular/angular.min.js"></script>
+    <script src="Angular/angular-route.min.js"></script>
+    <link rel="stylesheet" href="css/admin.css">
+    <title>Admin Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Lato", sans-serif;
+        }
+
+        .sidebar {
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            background-color: #f1f1f1;
+            position: fixed;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .sidebar a {
+            display: block;
+            color: black;
+            padding: 16px;
+            text-decoration: none;
+        }
+
+        .sidebar a.active {
+            background-color: #d71212;
+            color: white;
+        }
+
+        .sidebar a:hover:not(.active) {
+            background-color: #555;
+            color: white;
+        }
+
+        div.content {
+            margin-left: 200px;
+            padding: 1px 16px;
+            height: 1000px;
+        }
+
+        @media screen and (max-width: 700px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .sidebar a {
+                float: left;
+            }
+
+            div.content {
+                margin-left: 0;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .sidebar a {
+                text-align: center;
+                float: none;
+            }
+        }
+    </style>
+</head>
+
+<body ng-controller="adminController">
+    <div class="topnav">
+        <div class="div1"><img src="Asset/ticket.avif" width="50px" height="45px">
+            <h3 style="font-weight: bolder;">Tickets Now</h3>
+        </div>
+        <div>
+            <h3 style="color: rgb(232, 3, 3);font-weight: bolder;">Admin Page</h3>
+        </div>
+        <div><button class="btn btn-danger fs-5" ng-click="logout()">Log Out</button></div>
+    </div>
+
+
+    <div class="sidebar">
+        <div class="sidebar">
+            <a class="active fs-4" href="">Admin Page</a>
+            <a href="" class="fs-4">DashBoard</a>
+            <a href="" class="fs-4" ng-click="showContent('movies')">Movies</a>
+            <a href="" class="fs-4" ng-click="showContent('snacks')">Snacks</a>
+        </div>
+
+    </div>
+
+
+    <div class="content">
+        <div ng-if="contentType === 'movies'">
+            <table class="table table-striped">
+                <thead>
+                    <tr class="table-dark">
+                        <th>S.No</th>
+                        <th>Movie</th>
+                        <th>Time</th>
+                        <th>Language</th>
+                        <th>Approval</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="movie in movies">
+                        <td>{{$index + 1}}</td>
+                        <td><img ng-src="{{movie.poster}}" style="width: 50px;height: auto;"> {{movie.title}}
+                        </td>
+                        <td>{{movie.release_date}}</td>
+                        <td>{{movie.language}}</td>
+                        <td>
+                            <button class="btn fs-4 buttonApproved"
+                                ng-class="movie.approved ? 'btn-secondary' : 'btn-success'"
+                                ng-click="toggleMovieApproval($index)">
+                                {{movie.approved ? 'Approved' : 'Approve'}}
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-if="contentType === 'snacks'">
+            <table class="table table-striped">
+                <thead>
+                    <tr class="table-dark">
+                        <th>S.No</th>
+                        <th>Poster</th>
+                        <th>Type</th>
+                        <th>price</th>
+                        <th>Approval</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="beverage in beverages">
+                        <td>{{$index + 1}}</td>
+                        <td><img ng-src="{{beverage.poster}}" style="width: 50px;height: auto;"></td>
+                        <td>{{beverage.type}}</td>
+                        <td>{{beverage.price}}</td>
+                        <td>
+                            <button class="btn fs-4 buttonApproved"
+                                ng-class="beverage.approved ? 'btn-secondary' : 'btn-success'"
+                                ng-click="toggleBeverageApproval($index)">
+                                {{beverage.approved ? 'Approved' : 'Approve'}}
+                            </button>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

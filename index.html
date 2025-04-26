@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <script src="bootstrap/bootstrap.bundle.min.js"></script>
+
+    <script src="Angular/angular.min.js"></script>
+    <script src="Angular/angular-route.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+
+    <title>Main Assessment</title>
+    <script src="js/index.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/admin.js"></script>
+
+</head>
+
+<body ng-controller="myController">
+    <br><br>
+    <div class="container d-flex ">
+        <div class="mx-auto ">
+            <button ng-click="showForm('login')" class="btn btn-success fs-4">Login</button>
+            <button ng-click="showForm('signup')" class="btn btn-warning fs-4">SignUp</button>
+            <button ng-click="showForm('search')" class="btn btn-primary fs-4">Search</button>
+        </div>
+    </div>
+    <!-- login -->
+    <div class="container d-flex justify-content-center custom" ng-show="activeform === 'login'">
+
+
+        <form ng-submit="handleLogin()"   >
+            <h1 class="text-white text-center">Login</h1>
+
+            <h4 class="text-warning">{{message2}}</h4>
+
+            <div class="formlogin">
+                <input  type="text" placeholder="UserName" ng-model="loginName" required>
+
+            </div>
+            <div class="formlogin">
+                <input  type="password" placeholder="Password" ng-model="loginPassword" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100" style="margin-top:30px;">Login</button>
+
+            <p class="text-dark" style="padding:20px;font-size:20px; font-weight: 800;">Don't have an Account? <span ng-click="showForm('signup')"
+                    class="text-danger " style="outline-color: black;">SignUp</span></p>
+
+
+        </form>
+
+
+
+    </div>
+    <!-- signUp -->
+    <div class="container d-flex justify-content-center custom" ng-show="activeform === 'signup'">
+       
+                <form ng-submit="handleSignUp()">
+                    <h1 class="text-white text-center">Sign Up</h1>
+
+                    <h4 class="text-warning">{{signmessage}}</h4>
+
+                    <div class="formlogin">
+                        <input class="input" type="text" placeholder="UserName" ng-model="signupName" required>
+
+                    </div>
+                    <div class="formlogin">
+                        <input class="input" type="password" placeholder="Password" ng-model="signupPassword" required>
+                    </div>
+                    <div class="formlogin">
+                        <input class="input" type="password" placeholder=" Re-Enter Password"
+                            ng-model="signupRePassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-danger w-100" style="margin-top:30px;">SignUp</button>
+                    <p class="text-dark" style="padding:20px;font-size:20px;font-weight: 800;">All ready have an Account? <span ng-click="showForm('login')"
+                        class="text-primary">Login</span></p>
+
+                </form>
+          
+    </div>
+
+    <!-- search -->
+    <div ng-show="activeform === 'search'">
+
+        <div class="container mt-5">
+            <input type="text" ng-model="searchInput"
+                style="width: 100%;border-radius: 10px;height: 5vh; font-weight: bolder;margin-top: 20px;margin-bottom: 20px;"
+                placeholder="Search Here!!!">
+            <div ng-show="tablecontent">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="table-dark">
+                            <th>S.no</th>
+                            <th>Image</th>
+                            <th>Release date</th>
+                            <th>Language</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat=" x in filteredMovies | filter : searchInput">
+                            <td>{{$index +1}}</td>
+                            <td><img ng-src="{{x.poster}}" width="100px" height="100px">{{x.title}}</td>
+                            <td>
+                                <h4>{{x.release_date}}</h4>
+                            </td>
+                            <td>
+                                <h4>{{x.language}}</h4>
+                            </td>
+                            <td>
+                                <h4>₹{{x.price}}</h4>
+                            </td>
+                        </tr>
+
+                </table>
+            </div>
+            <div ng-show="tablemsg" class="text-white text-center fs-3">No approved Movies</div>
+
+        </div>
+
+    </div>
+
+    
+    
+</body>
+
+</html>

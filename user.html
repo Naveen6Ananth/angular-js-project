@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="user">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/user.css" />
+
+  <link rel="stylesheet" href="bootstrap/bootstrap.min.css" />
+  <script src="bootstrap/bootstrap.bundle.min.js"></script>
+
+  <script src="Angular/angular.min.js"></script>
+  <script src="Angular/angular-route.min.js"></script>
+  <title>Page 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      background-color: blanchedalmond;
+    }
+
+    .sidebar {
+      margin: 0;
+      padding: 0;
+      width: 200px;
+      background-color: #f1f1f1;
+      position: fixed;
+      height: 100%;
+      overflow: auto;
+    }
+
+    .sidebar a {
+      display: block;
+      color: black;
+      padding: 16px;
+      text-decoration: none;
+    }
+
+    .sidebar a.active {
+      background-color: #da200f;
+      color: white;
+    }
+
+    .sidebar a:hover:not(.active) {
+      background-color: #555;
+      color: white;
+    }
+
+    div.content {
+      margin-left: 200px;
+      padding: 1px 16px;
+      height: 1000px;
+    }
+
+    @media screen and (max-width: 700px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+
+      .sidebar a {
+        float: left;
+      }
+
+      div.content {
+        margin-left: 0;
+      }
+    }
+
+    @media screen and (max-width: 400px) {
+      .sidebar a {
+        text-align: center;
+        float: none;
+      }
+    }
+  </style>
+</head>
+
+<body ng-controller="userController">
+  <div class="topnav">
+    <div class="div1">
+      <img src="Asset/ticket.avif" width="50px" height="45px" />
+      <h3 style="font-weight: bolder">Tickets Now</h3>
+    </div>
+    <div>
+      <h3 style="color: rgb(232, 3, 3); font-weight: bolder">User Page</h3>
+    </div>
+    <div>
+      <button class="btn btn-danger fs-5" ng-click="logout()">Log Out</button>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <a class="active fs-4" href="#home">User:{{currentUser}}</a>
+    <a href="#news" class="fs-4" ng-click="showContent('friendrequest')">Friend Request</a>
+    <a href="#contact" class="fs-4" ng-click="showContent('friendlist')">Friend List</a>
+    <a href="#about" class="fs-4" ng-click="showContent('movies')">Movies</a>
+    <a href="#about" class="fs-4" ng-click="showContent('snacks')">Snacks</a>
+    <a href="#about" class="fs-4" ng-click="showContent('payment')">Payment</a>
+  </div>
+
+  <div class="content">
+    <div ng-if="contenttype === 'friendrequest' " id="request">
+
+      <div ng-repeat="x in arr" id="request2" class="mt-4">
+        <img ng-src="Asset/image{{$index + 1}}.avif" width="200px" height="200px" style="border-radius: 50%;">
+        <h4 style="text-align: center;">{{x}}</h4>
+        <center><button class="btn btn-md btn-success m-3" style="width: 100px;" ng-click="addFriend(x)">Add</button>
+        </center>
+      </div>
+    </div>
+
+    <div ng-if="contenttype === 'friendlist' " id="list">
+      <div ng-repeat="friend in arr2 track by $index" id="list2" class="mt-4">
+        <img ng-src="Asset/image{{$index + 1}}.avif" width="200px" height="200px" style="border-radius: 50%;">
+        <h4 style="text-align: center;">{{friend}}</h4>
+        <center><button ng-click="finalshow(friend)" class="btn btn-md btn-warning m-3"
+            style="width: 100px;">show</button></center>
+      </div>
+    </div>
+
+    <div ng-if="contenttype === 'payment' ">
+      <div style="display: flex; justify-content: space-around">
+        <div>
+          <h1 class="text-primary">{{message}}</h1>
+          <div class="card" style="width: 18rem; background-color: wheat" ng-show="selectedMov">
+            <img src="{{variable.poster}}" class="card-img-top" />
+            <div class="card-body">
+              <h5 class="card-title h3">
+                Title:
+                <span style="color: rgb(174, 90, 90)">
+                  {{variable.title}}
+                </span>
+              </h5>
+              <p class="card-text h4">
+                Price:
+                <span style="color: rgb(129, 59, 59)">
+                  ₹{{variable.price}}
+                </span>
+              </p>
+              <label for="" class="h5">seats:</label>
+              <input type="number" min="1" ng-model="seats"  style="border-radius: 5px;"/>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h2 ng-show="bev1">Total for Beverages: ₹{{grandTotal || 0}}</h2>
+          <h2 ng-show="seats > 0">
+            Total for the tickets:₹{{seats * variable.price || 0}}
+          </h2>
+          <h2 ng-show="bev2" class="text-danger">Pls select a Beverage</h2>
+          <button ng-click="paymentButton()" class="btn btn-success fs-4">
+            Pay:{{(grandTotal || 0) +(seats * variable.price || 0) }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div ng-if="contenttype === 'movies' ">
+      <div ng-show="moviemsg">
+        <h1 class="text-danger">No Movies Approved</h1>
+      </div>
+
+      <div ng-show="showmovietable">
+        <h1 class="text-center " style="font-weight: bolder">
+          Select a Movie
+        </h1>
+        <div class="moviecont">
+          <div ng-repeat="x in filteredMovies " >
+            <div class="card" style="width: 18rem; background-color: wheat">
+              <img src="{{x.poster}}" class="card-img-top" />
+              <div class="card-body">
+                <h5 class="card-title h3">
+                  Title:
+                  <span style="color: rgb(174, 90, 90)"> {{x.title}} </span>
+                </h5>
+                <p class="card-text h4">
+                  Price:
+                  <span style="color: rgb(129, 59, 59)"> ₹{{x.price}} </span>
+                </p>
+                <button class="btn btn-primary fs-4" ng-click="MovieSelected(x)">
+                  Book Ticket
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div ng-if="contenttype === 'snacks' ">
+      <div ng-show="snackmsg">
+        <h1 class="text-danger">No Beverages Approved</h1>
+      </div>
+      <div ng-show="snacktable">
+        <table class="table table-striped">
+          <thead>
+            <tr class="table-dark">
+              <th>S.NO</th>
+              <th>Image</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat=" x in filteredBeverages">
+              <td>{{$index+1}}</td>
+              <td>
+                <img ng-src="{{x.poster}}" width="100px" height="100px" />
+              </td>
+              <td>{{x.type}} - ₹{{x.price}}</td>
+              <td>
+                <input type="number" ng-model="x.quant" min="0" ng-init="x.quant = 0" />
+              </td>
+              <td>Total : {{ x.quant * x.price || 0}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-success fs-4" ng-click="calculateGrandTotal()">
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="friendMovieModal" tabindex="-1" aria-labelledby="friendMovieModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="friendMovieModalLabel">{{selectedFriendMovie.title}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img ng-src="{{selectedFriendMovie.poster}}" class="img-fluid" alt="Movie Poster" />
+          <p><strong>Price:</strong> ₹{{selectedFriendMovie.price}}</p>
+          <p><strong>language:</strong> {{selectedFriendMovie.language}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="payment" tabindex="-1" aria-labelledby="friendMovieModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-body">
+          <h1 class="text-success">Payment Done Successfull!</h1>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="nomovie" tabindex="-1" aria-labelledby="friendMovieModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-body">
+          <h1 class="text-warning">No Movie Booked By this User</h1>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="js/user.js"></script>
+</body>
+
+</html>

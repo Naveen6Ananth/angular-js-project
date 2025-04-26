@@ -1,0 +1,35 @@
+*{
+    font-family: "Chakra Petch", sans-serif;
+}
+
+.topnav {
+    background-color: rgb(255, 227, 127);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.div1 {
+    display: flex;
+}
+.btn-danger{
+    width: 100px;
+    height: 45px;    
+}
+.heit{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(221, 72, 72);
+}
+td,tr{
+font-size:x-large;
+font-weight: bold;
+}
+th{
+    font-size: xx-large;
+}
+.buttonApproved{
+    width: 150px;
+    
+}

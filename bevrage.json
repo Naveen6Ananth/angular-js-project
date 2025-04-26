@@ -1,0 +1,88 @@
+[
+    {
+      "title": "Coca Cola",
+      "type": "Soft Drink",
+      "flavor": "Cola",
+      "rating": 4.5,
+      "price": "199",
+      "poster": "img/co.jpg",
+      "approved": false
+    },
+    {
+      "title": "Pepsi",
+      "type": "fruit",
+      "flavor": "Cola",
+      "rating": 4.3,
+      "price": "189",
+
+      "poster": "img/ice.jpg",
+      "approved": false
+    },
+    {
+      "title": "Orange Juice",
+      "type": "Juice",
+      "flavor": "Orange",
+      "rating": 4.7,
+      "price": "249",
+      "poster": "img/jus.jpg",
+      "approved": false
+    },
+  {
+    "title": "Pop Corn",
+    "type": "Snacks",
+    "flavor": "roast",
+    "rating": 4.5,
+    "price": "299",
+    "poster": "img/orange.jpg",
+    "approved": false
+  },
+  {
+    "title": "Pizza",
+    "type": "fast food",
+    "flavor": "Non veg",
+    "rating": 4.3,
+    "price": "189",
+
+    "poster": "img/sta.jpg",
+    "approved": false
+  },
+  {
+    "title": "Burger",
+    "type": "Sandwich",
+    "flavor": "veg",
+    "rating": 4.7,
+    "price": "259",
+
+    "poster": "img/water.jpg",
+    "approved": false
+  },{
+    "title": "coffee",
+    "type": "Energy drink",
+    "flavor": "Sweet",
+    "rating": 4.5,
+    "price": "299",
+    "poster": "img/tim.jpg",
+    "approved": false
+  },
+  {
+    "title": "Tea",
+    "type": "Expresso",
+    "flavor": "Sweet",
+    "rating": 4.3,
+    "price": "189",
+
+   "poster": "img/heart.jpg",
+    "approved": false
+  },
+  {
+    "title": "Milk Shake",
+    "type": "tea",
+    "flavor": "Milk",
+    "rating": 4.7,
+    "price": "309",
+
+    "poster": "img/tea.jpeg",
+    "approved": false
+
+  } 
+]

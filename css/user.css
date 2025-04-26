@@ -1,0 +1,66 @@
+*{
+    font-family: "Chakra Petch", sans-serif;
+}
+
+
+.topnav {
+    background-color: rgb(255, 227, 127);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.div1 {
+    display: flex;
+    
+}
+
+.btn-danger {
+    width: 100px;
+    height: 45px;
+}
+
+.heit {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(221, 72, 72);
+}
+
+.moviecont {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+td,tr {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+th {
+    font-size: xx-large;
+}
+#request{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+#request2{
+    background-color: rgb(247, 182, 159);
+    border-radius: 100px 100px 5px 5px ;
+}
+#list{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+#list2{
+    background-color: rgb(247, 182, 159);
+    border-radius: 100px 100px 5px 5px ;
+}
+.card{
+    box-shadow: 0 0 10px black;
+}
