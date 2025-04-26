@@ -16,12 +16,10 @@ app.controller('userController', ['$scope', '$http', function ($scope, $http) {
     $scope.user_movie = JSON.parse(localStorage.getItem('user_movie')) || []; 
 
     $scope.currentUser = JSON.parse(localStorage.getItem('currentUser')) || [];
-    console.log("User res");
     
 
     $http.get('movies.json').then(function (response) {
         $scope.movies = response.data;
-        console.log( response.data)
         let approvedMovies = JSON.parse(localStorage.getItem('approvedMovies')) || [];
 
         $scope.filteredMovies = $scope.movies.filter(function (movie) {
