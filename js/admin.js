@@ -8,7 +8,6 @@ admin.controller('adminController',['$scope','$http',function($scope,$http){
     }
     $http.get('movies.json').then(function(response){
         $scope.movies=response.data; 
-        console.log($scope.movies);
         checkApprovals(); 
 
     });
